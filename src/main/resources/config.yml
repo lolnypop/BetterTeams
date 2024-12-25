@@ -244,6 +244,24 @@ noMove: false
 # Possible values: [Any whole positive number]
 maxMove: 0
 
+################### OPTIONS MADE BY LOLNYPOP ########################################
+
+# should you restrict players from using commands from the BetterTeam plugin while in Combat?
+# combat checks will be done by GriefPrevention
+# requires GriefPrevention to be installed, you need to set the combat expire time in GriefPrevention's config.yml
+# list the commands you want to disable during combat
+restrictBetterTeamsCommandsDuringGPCombat:
+   - /team home
+   - /team warp
+
+cantUseCommandInCombatMessage: '&cYou cannot use {command} while in combat! {timeLeft} seconds left'
+
+# enable this if you want a DISPLAY timer for GriefPrevention combat timers
+# this will be an action bar display timer letting players know of their combat status
+displayTimerForGPCombat: true
+displayTimerMessage: '&cYou are in combat! {secondsLeft} seconds left'
+####################################################################################
+
 # If this is enabled, a slightly different set of commands will be avaliable allowing a team to only have a single owner
 # - If this is false, a team can have as many owners as wanted, members are promoted to owners with the command /team promote
 # - If this is true a team can only have a single owner, which is set by doing /team setowner
