@@ -353,6 +353,14 @@ public class Main extends JavaPlugin {
 			getServer().getPluginManager().registerEvents(new ZKothManager(), this);
 		}
 
+		if (getServer().getPluginManager().isPluginEnabled("GriefPrevention")) {
+			Bukkit.getLogger().info("Found plugin GriefPrevention, adding plugin integration");
+			CommandBlocker commandBlocker = new CommandBlocker(this);
+
+			getServer().getPluginManager().registerEvents(new CommandBlocker(this), this);
+			new CombatDisplayTimer(this, commandBlocker).start();
+		} else Bukkit.getLogger().warning("GriefPrevention plugin not found, Combat logics will be disabled");
+
 		getServer().getPluginManager().registerEvents((chatManagement = new ChatManagement()), this);
 		getServer().getPluginManager().registerEvents(new ScoreManagement(), this);
 		getServer().getPluginManager().registerEvents(new AllyManagement(), this);
