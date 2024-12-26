@@ -35,9 +35,12 @@ public class CommandBlocker implements Listener {
         UUID playerID = player.getUniqueId();
         String command = event.getMessage().toLowerCase();
 
+        String[] commandParts = command.split(" ");
+        String baseCommand = commandParts[0];
+
         // go through the commands in the config.yml
         for (String restrictedCommand : restrictedCommands) {
-            if (command.equalsIgnoreCase(restrictedCommand.toLowerCase())) {
+            if (baseCommand.startsWith(restrictedCommand.toLowerCase()) || command.equals(restrictedCommand.toLowerCase())) {
                 PlayerData playerData = GriefPrevention.instance.dataStore.getPlayerData(playerID);
 
                 long remainingTime = getCombatTimeRemaining(playerData); // get the remaining time left
